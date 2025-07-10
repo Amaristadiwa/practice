@@ -1,67 +1,60 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      background: 'linear-gradient(90deg, #6366f1 0%, #a5b4fc 100%)',
-      padding: '1rem 2rem',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-    }}>
+    <nav className="bg-white border-b border-pink-200 px-6 py-4 flex justify-between items-center relative z-20">
       {/* Logo */}
-      <div style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#fff', letterSpacing: '2px' }}>
-        <span role="img" aria-label="logo">🌟</span> MyBrand
+      <div className="flex items-center space-x-2">
+        <img src="src/assets/images/weddinglogo.png" alt="Wedding Bells Logo" className="w-12 h-12" />
+        <Link to="/" className="text-2xl font-bold text-pink-600">Wedding Bells</Link>
       </div>
-      {/* Navigation Links */}
-      <div style={{ display: 'flex', gap: '2rem' }}>
-        <Link 
-          to='/' 
-          style={{
-            color: '#fff',
-            textDecoration: 'none',
-            fontWeight: 500,
-            fontSize: '1rem',
-            transition: 'color 0.2s',
-          }}
-          onMouseOver={e => e.target.style.color = '#facc15'}
-          onMouseOut={e => e.target.style.color = '#fff'}
-        >
-          Home
-        </Link>
-        <Link 
-          to='/about' 
-          style={{
-            color: '#fff',
-            textDecoration: 'none',
-            fontWeight: 500,
-            fontSize: '1rem',
-            transition: 'color 0.2s',
-          }}
-          onMouseOver={e => e.target.style.color = '#facc15'}
-          onMouseOut={e => e.target.style.color = '#fff'}
-        >
-          About
-        </Link>
-        <Link 
-          to='/services' 
-          style={{
-            color: '#fff',
-            textDecoration: 'none',
-            fontWeight: 500,
-            fontSize: '1rem',
-            transition: 'color 0.2s',
-          }}
-          onMouseOver={e => e.target.style.color = '#facc15'}
-          onMouseOut={e => e.target.style.color = '#fff'}
-        >
-          Services
-        </Link>
-      </div>
+
+      {/* Desktop Links */}
+      <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
+        <li><Link to="/" className="hover:text-pink-500">Home</Link></li>
+        <li><Link to="/start" className="hover:text-pink-500">Start Planning</Link></li>
+        <li><Link to="/venues" className="hover:text-pink-500">Venues</Link></li>
+        <li><Link to="/services" className="hover:text-pink-500">Services</Link></li>
+        <li><Link to="/inspiration" className="hover:text-pink-500">Inspiration</Link></li>
+        <li><Link to="/help" className="hover:text-pink-500">Help</Link></li>
+        <li>
+          <Link to="/login" className="text-pink-600 font-semibold hover:underline">
+            Sign In
+          </Link>
+        </li>
+      </ul>
+
+      {/* Hamburger Icon */}
+      <button
+        className="md:hidden p-2"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle Menu"
+      >
+        <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {menuOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6h18M3 12h18M3 18h18" />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <ul className="absolute top-full left-0 w-full bg-white border-t border-pink-200 px-6 py-4 space-y-3 md:hidden shadow-md">
+          <li><Link to="/" className="block text-gray-700 hover:text-pink-500">Home</Link></li>
+          <li><Link to="/start" className="block text-gray-700 hover:text-pink-500">Start Planning</Link></li>
+          <li><Link to="/venues" className="block text-gray-700 hover:text-pink-500">Venues</Link></li>
+          <li><Link to="/services" className="block text-gray-700 hover:text-pink-500">Services</Link></li>
+          <li><Link to="/inspiration" className="block text-gray-700 hover:text-pink-500">Inspiration</Link></li>
+          <li><Link to="/help" className="block text-gray-700 hover:text-pink-500">Help</Link></li>
+          <li><Link to="/login" className="block text-pink-600 font-semibold">Sign In</Link></li>
+        </ul>
+      )}
     </nav>
   );
-};
+}
 
-export default Navbar;

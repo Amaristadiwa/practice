@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import About from './pages/About'
 import Services from './pages/Services'
 import Navbar from './pages/Navbar'
+import './index.css'
 
 const App = () => {
   return (
