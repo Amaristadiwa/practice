@@ -5,7 +5,10 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Navbar from './pages/Navbar'
 import './index.css'
-
+import StartPlanning from './pages/StartPlanning';
+import ChooseYourRole from './pages/ChooseYourRole';
+import CoupleNames from "./pages/CouplesName";
+import WeddingDate from './pages/WeddingDate';
 const App = () => {
   return (
     <div>
@@ -13,8 +16,13 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/about' element={<About />}/>
+        <Route path='/start-planning' element={<StartPlanning />}/>
+         <Route path="/choose-role" element={<ChooseYourRole />} />
+           <Route path="/start/couple-names" element={<CoupleNames />} />
+                 <Route path="/start/wedding-date" element={<WeddingDate />} />
+
         <Route path='/services' element={<Services />}/>
-        {/* <Route path='/contact' element={<Contact />}/> */}
+    
       </Routes>
     </div>
   ) 
