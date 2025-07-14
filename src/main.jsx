@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { PlanningProvider } from './components/Context/Planningcontext'; // adjust path if needed
+import { PlanningProvider } from "./components/context/Planningcontext";
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
