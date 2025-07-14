@@ -1,15 +1,16 @@
+// Planningcontext.jsx
 import React, { createContext, useContext, useState } from 'react';
 
 const PlanningContext = createContext();
 
-export const PlanningProvider = ({ children }) => {
+export function PlanningProvider({ children }) {
   const [form, setForm] = useState({
     coupleNames: '',
     weddingDate: '',
     location: '',
     guestCount: '',
     theme: '',
-    budget: ''
+    budget: '',
   });
 
   return (
@@ -17,6 +18,6 @@ export const PlanningProvider = ({ children }) => {
       {children}
     </PlanningContext.Provider>
   );
-};
+}
 
 export const usePlanning = () => useContext(PlanningContext);

@@ -23,7 +23,7 @@ export default function CoupleNames() {
       >
         {/* Step Indicator */}
         <div className="text-sm text-pink-800 font-semibold mb-4 text-center">
-          Step 1 of 5
+          Step 1 of 6
         </div>
 
         {/* Title */}
